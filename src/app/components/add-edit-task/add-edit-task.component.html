@@ -1,0 +1,80 @@
+<div class="container">
+  <h2 mat-dialog-title>{{ flag }}Tarea</h2>
+  <mat-spinner *ngIf="loading" [diameter]="30"></mat-spinner>
+</div>
+<form [formGroup]="form" (ngSubmit)="addEditTask()">
+  <mat-dialog-content >
+    <div class="row">
+      <div class="column">
+        <mat-form-field appearance="fill">
+          <mat-label>Ingrese un nombre</mat-label>
+          <input
+          formControlName="name"
+            matInput
+            placeholder="Nombre de la tarea"
+            required
+            autocomplete="off"
+          />
+        </mat-form-field>
+        <div class="error">
+          <span *ngIf="form.get('name')?.hasError('required') && form.get('name')?.touched">Campo <strong> requerido</strong> </span>
+          <span *ngIf="form.get('name')?.hasError('maxlength')"> El nombre no debe tener mas de <strong>20 caracteres</strong></span>
+        </div>
+      </div>
+      <div class="column">
+        <mat-form-field appearance="fill">
+          <mat-label>Encargado de la tarea</mat-label>
+          <input
+          formControlName="owner"
+            matInput
+            placeholder="Responsable de la tarea"
+            required
+            autocomplete="off"
+          />
+        </mat-form-field>
+        <div class="error">
+          <span *ngIf="form.get('owner')?.hasError('required') && form.get('owner')?.touched">Campo <strong> requerido</strong> </span>
+          <span *ngIf="form.get('owner')?.hasError('maxlength')"> El usuario no debe tener mas de <strong>20 caracteres</strong></span>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="column">
+        <mat-form-field appearance="fill">
+          <mat-label>Descripcion de la tarea</mat-label>
+          <input
+          formControlName="description"
+            matInput
+            placeholder="Describa la tarea"
+            required
+            autocomplete="off"
+          />
+        </mat-form-field>
+        <div class="error">
+          <span *ngIf="form.get('description')?.hasError('required') && form.get('description')?.touched">Campo <strong> requerido</strong> </span>
+        </div>
+      </div>
+
+    </div>
+    <div class="row">
+      <div class="column">
+        <mat-form-field>
+          <mat-label>Seleccione una fecha</mat-label>
+          <input [max]="maxDate" formControlName="date" matInput [matDatepicker]="picker">
+          <mat-hint>MM/DD/YYYY</mat-hint>
+          <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+        <div class="error">
+          <span *ngIf="form.get('date')?.hasError('required') && form.get('date')?.touched">Campo <strong> requerido</strong> </span>
+        </div>
+      </div>
+    </div>
+
+  </mat-dialog-content>
+  <mat-dialog-actions align="end">
+    <button type="button" mat-button mat-dialog-close>Cancelar</button>
+    <button [disabled]="form.invalid" type="submit" mat-button  cdkFocusInitial mat-dialog-close>Aceptar</button>
+  </mat-dialog-actions>
+
+</form>
