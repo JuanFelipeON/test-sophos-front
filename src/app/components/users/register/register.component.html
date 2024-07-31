@@ -1,0 +1,51 @@
+<div class="container">
+  <h2 mat-dialog-title>Registrando usuario</h2>
+</div>
+<form [formGroup]="formNewUser" (ngSubmit)="createNewUser()">
+  <mat-dialog-content >
+    <div class="row">
+      <div class="column">
+        <mat-form-field appearance="fill">
+          <mat-label>Ingrese un nombre</mat-label>
+          <input
+          formControlName="nombre"
+            matInput
+            placeholder="Nombre del usuario"
+            required
+            autocomplete="off"
+          />
+        </mat-form-field>
+      </div>
+      <div class="column">
+        <mat-form-field appearance="fill">
+          <mat-label>Ingrese un email</mat-label>
+          <input
+          formControlName="email"
+            matInput
+            placeholder="Correo electronico"
+            required
+            autocomplete="off"
+          />
+        </mat-form-field>
+      </div>
+    </div>
+    <div>
+      <div class="column">
+        <mat-form-field appearance="fill">
+          <mat-label>Cree una contraseña</mat-label>
+          <input
+          formControlName="password"
+            matInput
+            required
+            autocomplete="off"
+            type="password"
+          />
+        </mat-form-field>
+      </div>
+    </div>
+  </mat-dialog-content>
+  <mat-dialog-actions align="end">
+    <button type="button" mat-button mat-dialog-close>Cancelar</button>
+    <button [disabled]="formNewUser.invalid" type="submit" mat-button  cdkFocusInitial mat-dialog-close>Aceptar</button>
+  </mat-dialog-actions>
+</form>

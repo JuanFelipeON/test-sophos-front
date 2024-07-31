@@ -1,0 +1,16 @@
+.login-card {
+  max-width: 400px;
+  margin: 2rem auto;
+  padding: 1rem;
+  border-top: 5px solid purple;
+}
+
+mat-form-field {
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+button {
+  width: 100%;
+  margin-top: 10px;
+}
