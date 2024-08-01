@@ -1,9 +1,28 @@
+.toolbar-content {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.user-name {
+  flex: auto;
+}
+
+.tittle {
+  flex: auto;
+}
+
+.spacer {
+  flex: auto;
+}
+
+
 table {
   width: 100%;
 }
 .mat-mdc-form-field {
   font-size: 14px;
-  width: 90%;
+  width: 80%;
   margin-right: 10px;
 }
 

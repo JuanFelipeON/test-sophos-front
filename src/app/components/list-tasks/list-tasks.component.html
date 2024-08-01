@@ -1,5 +1,10 @@
 <mat-toolbar color="primary">
-  <span>lista de tareas</span>
+  <div class="toolbar-content">
+    <span class="user-name">{{ user }}</span>
+    <span class="task-list">lista de tareas</span>
+    <span class="spacer"></span>
+    <button mat-raised-button color="accent" (click)="logout()">Logout</button>
+  </div>
 </mat-toolbar>
 <mat-card appearance="outlined">
   <mat-card-content>

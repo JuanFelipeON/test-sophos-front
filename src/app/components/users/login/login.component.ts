@@ -62,6 +62,7 @@ export class LoginComponent implements OnInit {
         );
         if (!response.error) {
           localStorage.setItem('token', response.token);
+          localStorage.setItem('userName', response.userName);
           this.router.navigate(['/task-list']);
         } else {
           console.error('Login error:', response.error);
