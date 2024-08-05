@@ -1,20 +1,12 @@
 import { HttpInterceptorFn } from '@angular/common/http';
-import { inject } from '@angular/core';
-//import { TaskService } from '../services/task.service';
-import { UserService } from '../services/user.service';
 
 export const authInterceptor: HttpInterceptorFn = (req, next) => {
-  //const taskService = inject(TaskService);
-  const userService = inject(UserService);
-
-  const token = userService.getAuthToken();
-
-  const authReq = req.clone({
+  if (req.url.indexOf('tasks') === -1) return next(req);
+  const token = localStorage.getItem('token');
+  const clonRequest = req.clone({
     setHeaders: {
-      Authorization: token,
+      Authorization: `Bearer ${token}`,
     },
   });
-
-
-  return next(authReq);
+  return next(clonRequest);
 };
